@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
@@ -34,38 +35,38 @@ const FeatureGrid: React.FC = () => {
       imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200',
     },
     {
-      title: 'Corporate Cards',
-      description: 'Control spend before it happens.',
+      title: '24/7 Availability',
+      description: 'Never miss a lead.',
       imageUrl: 'https://images.unsplash.com/photo-1613243555988-441166d4d6fd?auto=format&fit=crop&q=80&w=1200',
     },
     {
-      title: 'Expense Management',
-      description: 'Expenses that submit themselves.',
+      title: 'Tour Scheduling',
+      description: 'Convert calls into tours.',
       imageUrl: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=1200',
     },
     {
-      title: 'Accounts Payable',
-      description: 'Process bills in seconds.',
+      title: 'Resident Support',
+      description: 'Handle emergencies instantly.',
       imageUrl: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=1200',
     },
     {
-      title: 'Travel',
-      description: 'Travel that stays in policy.',
+      title: 'SMS Follow-Ups',
+      description: 'Calls convert better with text.',
       imageUrl: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200',
     },
     {
-      title: 'Procurement',
-      description: 'Simplify your procurement process.',
+      title: 'CRM/PMS Integration',
+      description: 'Works with your stack.',
       imageUrl: 'https://images.unsplash.com/photo-1454165833767-1314d792701b?auto=format&fit=crop&q=80&w=1200',
     },
     {
-      title: 'Accounting Automation',
-      description: 'Accelerate your monthly close.',
+      title: 'Conversion Analytics',
+      description: 'See what works.',
       imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200',
     },
     {
-      title: 'Voiceptionist Treasury',
-      description: 'High yield on idle cash.',
+      title: 'Multi-Property Management',
+      description: 'Scale across your portfolio.',
       imageUrl: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=1200',
     },
   ];

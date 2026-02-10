@@ -7,29 +7,29 @@ const ImplementationTimeline: React.FC = () => {
       label: 'Today',
       title: 'Get started.',
       items: [
-        'Connect your ERP in five minutes',
-        'Upload your policy in two minutes',
-        'Issue yourself a card in one minute'
+        'Go live with Voiceptionist in five minutes',
+        'Upload your bylaws in two minutes',
+        'Connect your phone number in one minute'
       ],
       active: false
     },
     {
-      label: 'Day 5',
+      label: 'Day 3',
       title: 'Get comfortable.',
       items: [
-        'Connect to HRIS, email, and 200+ apps',
-        'Set up approvals and controls',
-        'Issue cards to employees'
+        'Connect PMS, calendars, maintenance tools',
+        'Set leasing, resident, emergency routing rules ',
+        'Enable SMS follow-ups + tour booking'
       ],
       active: false
     },
     {
-      label: 'Day 30',
+      label: 'Day 7',
       title: "Ask why you didn't switch years ago.",
       items: [
-        '100% of business spend moved to Voiceptionist',
-        'Intake-to-pay 8.5x more efficient',
-        'Books close 75% faster'
+        '50% reduction in front desk workload',
+        '90%+ of calls handled by AI',
+        '2–5x more tours booked'
       ],
       active: true
     }
@@ -39,8 +39,8 @@ const ImplementationTimeline: React.FC = () => {
     <section className="pt-20 pb-32 bg-white">
       {/* Increased container width to 1400px to allow cards to be wider */}
       <div className="max-w-[1400px] mx-auto px-6 text-center">
-        <p className="text-gray-500 font-medium mb-6 text-sm">New software shouldn't take a year to implement.</p>
-        <h2 className="text-[45px] font-medium tracking-tight mb-8 text-gray-900 leading-[1.1]">Here's what you can get done with <br /> Voiceptionist in just 30 days.</h2>
+        <p className="text-gray-500 font-medium mb-6 text-sm">New software shouldn't take half a year to implement.</p>
+        <h2 className="text-[45px] font-medium tracking-tight mb-8 text-gray-900 leading-[1.1]">Here's what you can get done with <br /> Voiceptionist in just 7 days.</h2>
         
         <button className="flex items-center space-x-2 mx-auto font-medium mb-12 group text-sm hover:text-gray-600 transition-colors cursor-default text-gray-900">
           <span>Switch to Voiceptionist</span>

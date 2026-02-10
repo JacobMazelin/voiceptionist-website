@@ -20,7 +20,7 @@ const OfferModal: React.FC<OfferModalProps> = ({ onClose }) => {
         <div className="flex-1 p-12 flex flex-col justify-center space-y-8">
            <h2 className="text-5xl font-medium tracking-tight text-gray-900 leading-[1.1]">Limited time: Get $150 when you take a Voiceptionist demo.</h2>
            <p className="text-gray-500 text-lg leading-relaxed">
-             See how Voiceptionist helps you save time, reduce waste, and take control of spend—then walk away with $150 for your time.
+             See how Voiceptionist helps you save time, reduce waste, and close more leads—then walk away with $150 for your time.
            </p>
            
            <div className="space-y-4">

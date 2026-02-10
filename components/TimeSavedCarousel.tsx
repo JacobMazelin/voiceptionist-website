@@ -33,7 +33,7 @@ const TimeSavedCarousel: React.FC = () => {
           What would you do with more time?
         </h2>
         <p className="text-gray-500 text-[14px] md:text-[16px] mb-10 font-medium opacity-80">
-          Over 27.5M+ hours saved for 50,000+ customers.
+          Over 1M+ hours saved for 100+ customers.
         </p>
         <button className="text-gray-600 font-bold text-[13px] flex items-center space-x-2 mx-auto hover:text-black transition-colors group mb-24 uppercase tracking-widest">
           <span>View all customer stories</span>

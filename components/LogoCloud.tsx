@@ -10,7 +10,7 @@ const LogoCloud: React.FC = () => {
       {/* Centered header text */}
       <div className="max-w-7xl mx-auto px-4 mb-2">
         <p className="text-center text-sm font-medium text-gray-500">
-          50,000+ finance teams have saved millions of hours with Voiceptionist.
+          100+ apartment teams have saved thousands of hours with Voiceptionist
         </p>
       </div>
       

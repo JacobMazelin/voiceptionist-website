@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { 
   ChevronDown, Menu, X, CreditCard, PieChart, FileText, ShoppingCart, Globe, Briefcase, 
@@ -25,7 +26,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
   }, [currentView]);
 
   const products = [
-    { icon: <CreditCard size={18} />, title: 'Corporate Cards', desc: 'Control spend before it happens.' },
+    { icon: <CreditCard size={18} />, title: '24/7 Availability', desc: 'Captures every inbound call, even after hours' },
     { icon: <PieChart size={18} />, title: 'Expense Management', desc: 'Eliminate expense reports.' },
     { icon: <FileText size={18} />, title: 'Accounts Payable', desc: 'Process AP in minutes.' },
     { icon: <ShoppingCart size={18} />, title: 'Procurement', desc: 'Speed up intake-to-pay.' },

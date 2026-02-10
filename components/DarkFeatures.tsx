@@ -40,13 +40,13 @@ const TransactionFeed: React.FC = () => (
 const DarkFeatures: React.FC = () => {
   const items = [
     {
-      title: 'Set policies that enforce themselves.',
-      desc: <>Customize approval flows, pre-approve funds,<br />issue cards with built-in controls</>,
+      title: 'Set workflows that run themselves.',
+      desc: <>Train Voiceptionist on your leasing rules, FAQs,<br /> emergency protocols, and routing logic.</>,
       link: 'Expense management',
       img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200'
     },
     {
-      title: 'Triple checks are done for you.',
+      title: 'Triple-checks are done for you.',
       desc: <>Voiceptionist keeps an eye out 24/7 to catch<br />any out-of-policy transactions</>,
       link: 'Intelligence',
       img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200',

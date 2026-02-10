@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Star } from 'lucide-react';
 import EmailInput from './EmailInput';
@@ -43,7 +44,9 @@ const AwardsSection: React.FC = () => {
       {/* Bottom centered content */}
       <div className="max-w-7xl mx-auto px-4 text-center">
         <div className="space-y-6">
-           <h2 className="text-[18px] md:text-[27px] font-normal tracking-tight">Time is money. Save both.</h2>
+           <h2 className="text-[18px] md:text-[27px] font-normal tracking-tight">
+             Never miss a call again.
+           </h2>
            <div className="max-w-xl mx-auto">
                 <EmailInput buttonText="Get started for free" placeholder="What's your work email?" />
            </div>

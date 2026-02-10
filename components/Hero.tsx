@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Star } from 'lucide-react';
 import EmailInput from './EmailInput';
@@ -15,15 +16,16 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
             <div className="flex items-center text-ramp-lime">
               <Star size={14} fill="currentColor" />
             </div>
-            <span className="text-xs font-semibold uppercase tracking-widest text-white/80">2,000+ 5 star reviews</span>
+            <span className="text-xs font-semibold uppercase tracking-widest text-white/80">Top Rated AI Voice Agent</span>
           </div>
 
           <h1 className="text-[44px] md:text-[72px] font-medium leading-[1.05] tracking-tighter">
-            Time is money.<br />Save both.
+            Never miss a<br />call again.
           </h1>
           
           <p className="text-xl text-white/70 leading-relaxed">
-            Easy-to-use corporate cards, bill payments, accounting, and a whole lot more. All in one place.
+            AI receptionist that handles calls 24/7, answers <br />
+            questions, texts follow-ups, and books tours.
           </p>
 
           <div className="py-2">
@@ -44,8 +46,8 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
               <div className="absolute top-0 right-0 w-full max-w-lg aspect-video bg-[#f8fafc] rounded-2xl shadow-2xl border-[12px] border-[#2d2e30] transform perspective-1000 rotate-y-[-10deg] overflow-hidden">
                 <div className="p-6 bg-white h-full">
                    <div className="flex items-center justify-between mb-8">
-                     <h3 className="text-2xl font-bold text-gray-900">Reporting</h3>
-                     <div className="bg-ramp-lime px-3 py-1 text-xs font-bold rounded text-black">+ Create report</div>
+                     <h3 className="text-2xl font-bold text-gray-900">Call Log</h3>
+                     <div className="bg-ramp-lime px-3 py-1 text-xs font-bold rounded text-black">Active Calls</div>
                    </div>
                    <div className="h-48 w-full bg-gray-100 rounded-xl relative overflow-hidden">
                       <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-emerald-50 to-transparent"></div>
@@ -81,7 +83,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                  </div>
                  <div className="z-10">
                     <div className="w-12 h-8 bg-amber-400/20 rounded-md border border-amber-400/30"></div>
-                    <div className="text-white/40 text-[10px] mt-4 tracking-[0.2em]">•••• 1234</div>
+                    <div className="text-white/40 text-[10px] mt-4 tracking-[0.2em]">Live Conversation...</div>
                  </div>
               </div>
            </div>

@@ -5,16 +5,16 @@ const ScaleSection: React.FC = () => {
     <section className="py-32 bg-[#f9fafb]">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-20 space-y-6">
-          <h2 className="text-4xl font-medium tracking-tight text-gray-900">For startups, global enterprises, and everyone in between.</h2>
+          <h2 className="text-4xl font-medium tracking-tight text-gray-900">For entrepreneurs, property management companies,<br />and everyone in between.</h2>
           <p className="text-gray-500 text-lg max-w-2xl mx-auto">
-            Simple defaults, direct integrations, and advanced customization means Voiceptionist will scale with you.
+            Simple to start. Powerful as you scale. Voiceptionist grows with your portfolio.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
            <div className="bg-white p-12 rounded-3xl space-y-6 shadow-sm border border-gray-100">
               <h3 className="text-xl font-bold text-gray-900">Completely flexible.</h3>
-              <p className="text-gray-500">Customize Voiceptionist to fit your business and give you the controls you need with policies, roles, and approval workflows.</p>
+              <p className="text-gray-500">Customize Voiceptionist to fit your operations with<br />policies, roles, and approval workflows built in.</p>
               <div className="pt-10">
                  <div className="bg-gray-50 rounded-2xl p-6 h-40 flex items-center justify-center border border-gray-100">
                     <div className="bg-white px-6 py-4 rounded-xl shadow-lg border border-gray-100 flex items-center justify-between w-full max-w-xs">
@@ -27,7 +27,7 @@ const ScaleSection: React.FC = () => {
 
            <div className="bg-white p-12 rounded-3xl space-y-6 shadow-sm border border-gray-100">
               <h3 className="text-xl font-bold text-gray-900">An extension of your team.</h3>
-              <p className="text-gray-500">Get dedicated support anytime, anywhere. We're always ready to help.</p>
+              <p className="text-gray-500">Get dedicated support anytime, anywhere.<br />We're always ready to help.</p>
               <div className="pt-10 flex justify-center">
                  <div className="bg-[#bfdbfe] w-full max-w-xs rounded-3xl p-6 flex items-start space-x-4">
                     <div className="w-12 h-12 bg-white rounded-xl overflow-hidden shadow-sm">
@@ -35,7 +35,7 @@ const ScaleSection: React.FC = () => {
                     </div>
                     <div>
                        <p className="text-blue-900 font-bold">How can I help?</p>
-                       <p className="text-blue-700 text-sm">Nathan, Voiceptionist</p>
+                       <p className="text-blue-700 text-sm">Voiceptionist</p>
                     </div>
                  </div>
               </div>
@@ -43,16 +43,16 @@ const ScaleSection: React.FC = () => {
 
            <div className="bg-white p-12 rounded-3xl space-y-6 shadow-sm border border-gray-100">
               <h3 className="text-xl font-bold text-gray-900">Integrate and stay synced.</h3>
-              <p className="text-gray-500">Seamlessly integrate Voiceptionist with your accounting systems and consolidate your finance stack.</p>
+              <p className="text-gray-500">Seamlessly integrate Voiceptionist with your management<br />systems and consolidate your finance stack.</p>
               <div className="grid grid-cols-2 gap-4 pt-10">
-                 <div className="h-24 bg-gray-50 rounded-xl flex items-center justify-center text-emerald-600 font-bold text-3xl">sage</div>
-                 <div className="h-24 bg-gray-50 rounded-xl flex items-center justify-center text-sky-500 font-bold text-3xl">xero</div>
+                 <div className="h-24 bg-gray-50 rounded-xl flex items-center justify-center text-emerald-600 font-bold text-3xl">vendors</div>
+                 <div className="h-24 bg-gray-50 rounded-xl flex items-center justify-center text-sky-500 font-bold text-3xl">marketing</div>
               </div>
            </div>
 
            <div className="bg-white p-12 rounded-3xl space-y-6 shadow-sm border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900">Operate globally.</h3>
-              <p className="text-gray-500">Send payments to 195 countries in over 40 currencies and reimburse employees in their local currencies within 2 days.</p>
+              <h3 className="text-xl font-bold text-gray-900">Operate at scale.</h3>
+              <p className="text-gray-500">Manage calls, tours, and maintenance across your<br />entire portfolio from a single dashboard.</p>
               <div className="pt-10 space-y-4">
                  <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-100">
                     <span className="font-bold text-gray-900">£550</span>

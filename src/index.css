@@ -1,35 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  body {
-    @apply font-sans antialiased;
-    scroll-behavior: smooth;
-  }
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.bg-ramp-navy { background-color: #171717; }
-.text-ramp-lime { color: #abc2fe; }
-.bg-ramp-lime { background-color: #abc2fe; }
+.bg-ramp-navy {
+  background-color: #171717;
+}
+
+.text-ramp-lime {
+  color: #abc2fe;
+}
+
+.bg-ramp-lime {
+  background-color: #abc2fe;
+}
+
 .hero-gradient {
-    background: radial-gradient(circle at 70% 50%, #1e293b 0%, #171717 100%);
+  background: radial-gradient(circle at 70% 50%, #1e293b 0%, #171717 100%);
 }
 
 @keyframes scroll {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
+
 .animate-scroll {
   display: flex;
   width: fit-content;
   animation: scroll 60s linear infinite;
 }
+
 .animate-scroll-fast {
   display: flex;
   width: fit-content;
   animation: scroll 40s linear infinite;
 }
+
 .modal-overlay {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);

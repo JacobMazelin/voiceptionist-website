@@ -40,14 +40,14 @@ const TransactionFeed: React.FC = () => (
 const DarkFeatures: React.FC = () => {
   const items = [
     {
-      title: 'Set workflows that run themselves.',
-      desc: <>Train Voiceptionist on your leasing rules, FAQs,<br /> emergency protocols, and routing logic.</>,
+      title: <>Set workflows that <br />enforce themselves.</>,
+      desc: <>Train Voiceptionist on your leasing rules,<br />FAQs, emergency protocols, and routing logic.</>,
       link: 'Expense management',
       img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200'
     },
     {
       title: 'Triple-checks are done for you.',
-      desc: <>Voiceptionist keeps an eye out 24/7 to catch<br />any out-of-policy transactions</>,
+      desc: <>Voiceptionist keeps an eye out 24/7 to<br />catch any out-of-policy transactions</>,
       link: 'Intelligence',
       img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200',
       reversed: true
@@ -62,7 +62,7 @@ const DarkFeatures: React.FC = () => {
 
   return (
     <div className="bg-ramp-navy text-white">
-      <div className="max-w-[960px] mx-auto px-4 py-20 space-y-24">
+      <div className="max-w-[1200px] mx-auto px-4 py-20 space-y-24">
         <div className="text-center space-y-3 mx-auto">
            <h2 className="text-[clamp(1.8rem,4.5vw,3.75rem)] font-medium tracking-tight leading-[1.1] max-w-5xl mx-auto">
              Three<span className="text-[0.25em] align-top relative top-[1.2em]">*</span> ways we save your <br className="hidden md:block" /> company both time and money.

@@ -12,7 +12,7 @@ const Card: React.FC<CardProps> = ({ title, description, imageUrl }) => (
   <div className="group relative rounded-[12px] pt-6 px-6 pb-0 h-[432px] flex flex-col overflow-hidden bg-[#f7f7f7] text-black border border-transparent hover:border-gray-200 transition-all duration-300">
     <div className="relative z-10 flex flex-col h-full">
       <div className="space-y-1">
-        <h3 className="text-lg font-medium tracking-tight">{title}</h3>
+        <h3 className="text-xl font-medium tracking-tight">{title}</h3>
         <p className="text-sm leading-relaxed text-[#5f5f5f]">{description}</p>
         <div className="flex items-center space-x-1.5 text-sm font-medium pt-[14px] cursor-pointer text-[#9e9e9e]">
           <span>Learn more</span>

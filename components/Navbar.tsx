@@ -27,26 +27,26 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
 
   const products = [
     { icon: <CreditCard size={18} />, title: '24/7 Availability', desc: 'Captures every inbound call, even after hours' },
-    { icon: <PieChart size={18} />, title: 'Expense Management', desc: 'Eliminate expense reports.' },
-    { icon: <FileText size={18} />, title: 'Accounts Payable', desc: 'Process AP in minutes.' },
-    { icon: <ShoppingCart size={18} />, title: 'Procurement', desc: 'Speed up intake-to-pay.' },
-    { icon: <Globe size={18} />, title: 'Travel', desc: 'Keep T&E in check.' },
-    { icon: <Briefcase size={18} />, title: 'Banking & Treasury*', desc: 'High yield, low effort.' },
+    { icon: <PieChart size={18} />, title: 'Lead Qualification', desc: 'Turn inquiries into booked tours.' },
+    { icon: <FileText size={18} />, title: 'Tour Scheduling', desc: 'Convert calls into showings.' },
+    { icon: <ShoppingCart size={18} />, title: 'Resident Support', desc: 'Handle maintenance & emergencies.' },
+    { icon: <Globe size={18} />, title: 'SMS Follow-Ups', desc: 'Recover missed calls with text.' },
+    { icon: <Briefcase size={18} />, title: 'Multi-Property Coverage', desc: 'Scale your entire portfolio' },
   ];
 
   const platform = [
-    { icon: <Settings size={18} />, title: 'Integrations', desc: 'Connect to your finance stack.' },
+    { icon: <Settings size={18} />, title: 'Integrations', desc: 'Connect to your leasing stack.' },
     { icon: <Database size={18} />, title: 'Reporting', desc: 'Get full visibility in real-time.' },
-    { icon: <MessageSquare size={18} />, title: 'Accounting Automation', desc: 'Close books 3x faster.' },
-    { icon: <Globe size={18} />, title: 'Global Ready', desc: 'Spend globally, operate locally.' },
+    { icon: <MessageSquare size={18} />, title: 'Chat Analytics', desc: 'See what converts and why.' },
+    { icon: <Globe size={18} />, title: 'Routing & Workflows', desc: 'Escalate urgent issues automatically.' },
     { icon: <Terminal size={18} />, title: 'Intelligence', desc: 'Put AI to work for you.' },
-    { icon: <Code size={18} />, title: 'Developer Tools', desc: 'Build custom workflows.' },
+    { icon: <Code size={18} />, title: 'Admin Roles', desc: 'Control who can change what.' },
   ];
 
   const solutionsBySize = [
-    { icon: <Home size={18} />, title: 'Startups', desc: 'Everything you need, fast.' },
-    { icon: <Store size={18} />, title: 'Small business', desc: 'Travel, expenses, and AP in one place.' },
-    { icon: <Users size={18} />, title: 'Mid-market', desc: 'Automate tasks and delight employees.' },
+    { icon: <Home size={18} />, title: 'Single-Property', desc: 'Everything you need, fast.' },
+    { icon: <Store size={18} />, title: 'Multifamily', desc: 'Never miss a lead. Automate tours, FAQs, and follow-ups.' },
+    { icon: <Users size={18} />, title: 'HOAs & Managers', desc: 'Triage resident issues and route emergencies instantly.' },
     { icon: <Building2 size={18} />, title: 'Enterprise', desc: 'Go global and scale up operations.' },
   ];
 
@@ -73,7 +73,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
     { icon: <RefreshCcw size={18} />, title: 'Product updates', desc: 'Every new feature, fix, and improvement.' },
     { icon: <Laptop size={18} />, title: 'Blog', desc: 'What we\'re building.' },
     { icon: <TrendingUp size={18} />, title: 'Velocity', desc: 'Finance stories and strategies.' },
-    { icon: <BarChart size={18} />, title: 'Economics Lab', desc: 'Insights from Voiceptionist data.' },
+    { icon: <BarChart size={18} />, title: 'Voice AI Lab', desc: 'Insights from Voiceptionist data.' },
     { icon: <FileText size={18} />, title: 'Reports', desc: 'In-depth research.' },
   ];
 

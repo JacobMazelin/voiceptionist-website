@@ -73,19 +73,6 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
                  </div>
               </div>
 
-              <div className="absolute bottom-28 right-48 w-64 h-40 bg-[#121212] rounded-xl shadow-2xl z-30 transform -rotate-12 border border-white/10 p-6 flex flex-col justify-between overflow-hidden">
-                 <div className="absolute top-0 right-0 w-full h-full opacity-20 pointer-events-none">
-                    <div className="w-full h-full bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/20 via-transparent to-transparent"></div>
-                 </div>
-                 <div className="flex justify-between items-start z-10">
-                    <div className="w-8 h-8 rounded bg-gray-800"></div>
-                    <div className="text-white text-[10px] font-bold tracking-widest uppercase">voiceptionist</div>
-                 </div>
-                 <div className="z-10">
-                    <div className="w-12 h-8 bg-amber-400/20 rounded-md border border-amber-400/30"></div>
-                    <div className="text-white/40 text-[10px] mt-4 tracking-[0.2em]">Live Conversation...</div>
-                 </div>
-              </div>
            </div>
         </div>
       </div>

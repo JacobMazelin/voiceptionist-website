@@ -1,15 +1,16 @@
+
 import React from 'react';
 import { Apple, PlayCircle, Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
 import EmailInput from './EmailInput';
 
 const Footer: React.FC = () => {
   const footerData = {
-    About: ['Careers', 'Emerging talent', 'Customers', 'Help center', 'Product releases', 'Voiceptionist Labs', 'API documentation', 'Versus'],
-    Products: ['Corporate cards', 'Expense management', 'Spend management', 'Budgets', 'Treasury', 'Travel', 'Reimbursements', 'Procurement', 'Accounts payable', 'Vendor management', 'Approvals', 'Security', 'Trust', 'Mobile app', 'Voiceptionist Sheets'],
-    Platform: ['Platform overview', 'Accounting automation', 'Intelligence', 'Reporting', 'Savings', 'Integrations', 'Multi-entity', 'Global'],
-    Partners: ['Accounting firms', 'Private equity', 'Venture capital', 'Services providers', 'Technology partners'],
-    Solutions: ['Startups', 'Small business', 'Mid market', 'Enterprise'],
-    Resources: ['Perks and rewards', 'Find an accountant', 'Find a services partner', 'Savings calculator', 'Mission statement generator', 'Charge finder', 'Per diem calculator', 'Mileage reimbursement calculator', 'Card comparison tool', 'Investor database', 'Expense categorization', 'Vendor directory', 'Virtual cards']
+    About: ['Careers', 'Customers', 'Help center', 'Product updates', 'Voiceptionist Labs', 'Security', 'Trust'],
+    Products: ['AI receptionist', 'SMS follow-Ups', 'Tour scheduling', 'Maintenance triage', 'Missed call recovery', 'Call routing & escalation', 'Call analytics', 'Custom knowledge base'],
+    Platform: ['Platform overview', 'Voice AI engine', 'Call logs & transcripts', 'Real-time dashboards', 'Compliance', 'Integrations', 'Multi-property support'],
+    Partners: ['PMS integrations', 'Channel partners', 'Firms'],
+    Solutions: ['Student housing', 'Multifamily', 'HOAs', 'Leasing teams', 'Property managers'],
+    Resources: ['Pricing', 'Case studies', 'Security & compliance', 'Docs', 'Product updates', 'Status', 'Contact sales']
   };
 
   return (
@@ -40,8 +41,8 @@ const Footer: React.FC = () => {
                 <a href="#" className="hover:text-ramp-lime transition-colors">Privacy Policy</a>
                 <a href="#" className="hover:text-ramp-lime transition-colors">Your Privacy Choices</a>
              </div>
-             <p>The Voiceptionist Visa Corporate Card is issued in the U.S. by Celtic Bank, Member FDIC. Each card is issued pursuant to a license from Visa USA Inc.</p>
-             <p>Get up to 2% in the form of annual cash rewards on eligible funds in your Voiceptionist Business Account. Cash rewards are subject to change. See the Business Account Addendum for more information.</p>
+             <p>Voiceptionist is an early-stage startup building AI receptionists for student housing and property managers.</p>
+             <p>Currently in private beta. Built by the Voiceptionist team.</p>
           </div>
 
           <div className="space-y-8 min-w-[200px]">
@@ -51,8 +52,6 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="space-y-1">
                    <p className="text-white font-bold text-sm">Voiceptionist Business Corporation</p>
-                   <p className="text-xs">28 West 23rd Street, Floor 2</p>
-                   <p className="text-xs">New York, NY 10010</p>
                 </div>
              </div>
              <div className="flex gap-4">
@@ -78,7 +77,7 @@ const Footer: React.FC = () => {
       {/* CTA Section (Join 50k+ Businesses) - Spacing tightened and border removed */}
       <div className="max-w-7xl mx-auto px-4 mt-10 mb-8 pt-0">
         <div className="flex flex-col items-start gap-4">
-           <p className="text-white text-xl font-medium">Join the <span className="font-bold">50,000+ businesses</span> simplifying their finances with Voiceptionist.</p>
+           <p className="text-white text-xl font-medium">Join the <span className="font-bold">100+ businesses</span> simplifying their finances with Voiceptionist.</p>
            <EmailInput dark buttonText="Get started for free" className="w-full max-w-2xl" />
         </div>
       </div>

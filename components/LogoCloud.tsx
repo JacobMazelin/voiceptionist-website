@@ -2,7 +2,7 @@ import React from 'react';
 
 const LogoCloud: React.FC = () => {
   const logos = [
-    'Discord', 'GoodRx', "BARRY'S", 'eventbrite', 'VALCOURT', 'ANDURIL', 'shopify', 'Opendoor', 'ZOLA', 'KUMON', 'Webflow', 'Quora', 'VISA'
+    'Weida', 'Munizer', "Verve", 'Edge', 'RISE', 'FUSE', 'Hi-Vine', 'EVER', '4UP', 'Landing', 'MARQ', 'Century', 'Providence'
   ];
 
   return (

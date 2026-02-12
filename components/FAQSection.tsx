@@ -11,20 +11,20 @@ const FAQSection: React.FC = () => {
 
   const faqs: FAQItem[] = [
     {
-      question: 'Is there a free version of Voiceptionist?',
-      answer: 'Yes, Voiceptionist offers a robust Free plan that includes corporate cards, travel bookings, and basic expense management features for $0 per month per user.'
+      question: 'How does Voiceptionist handle calls?',
+      answer: 'Voiceptionist uses advanced AI to answer inbound calls 24/7. It greets callers naturally, answers questions about your property using your uploaded knowledge base, qualifies leads, schedules tours, and handles maintenance requests — all without human intervention.'
     },
     {
-      question: 'Are there any limits on how many cards I can issue?',
-      answer: 'No, all plans include unlimited physical and virtual corporate cards so you can scale spending controls across your entire organization.'
+      question: 'How quickly can I get set up?',
+      answer: 'You can be live in under 5 minutes. Just enter your property details, upload your property info (floor plans, pricing, policies), and we provision a dedicated phone number with a fully trained AI agent automatically.'
     },
     {
-      question: 'Can I pay for Voiceptionist Plus with a Voiceptionist card?',
-      answer: 'Absolutely. Many of our customers use their Voiceptionist corporate cards to pay for their subscription fees, keeping all their business spend in one unified platform.'
+      question: 'Can I use Voiceptionist across multiple properties?',
+      answer: 'Yes. Each property gets its own AI agent with a dedicated phone number, custom knowledge base, and tailored responses. You can manage all properties from a single dashboard.'
     },
     {
-      question: 'How can we manage our Voiceptionist plan?',
-      answer: 'Voiceptionist provides a centralized dashboard for administrators to upgrade plans, manage users, and configure permissions at any time as your business needs evolve.'
+      question: 'What happens if a caller needs to reach a real person?',
+      answer: 'Voiceptionist can be configured to escalate calls to your team for emergencies, complex situations, or when a caller specifically requests a human. You control the escalation rules.'
     }
   ];
 
@@ -34,7 +34,7 @@ const FAQSection: React.FC = () => {
       <div className="border-t border-gray-200">
         {faqs.map((faq, i) => (
           <div key={i} className="border-b border-gray-200">
-            <button 
+            <button
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
               className="w-full flex items-center justify-between py-8 text-left group"
             >

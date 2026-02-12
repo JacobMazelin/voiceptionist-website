@@ -85,6 +85,7 @@ const OnboardingView: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   // Pre-fill email from URL if present
   React.useEffect(() => {
@@ -130,15 +131,14 @@ const OnboardingView: React.FC = () => {
     return null;
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files || []);
+  const addFiles = (files: File[]) => {
     const validFiles: File[] = [];
     const newErrors: Record<string, string> = {};
 
     files.forEach(file => {
       const error = validateFile(file);
       if (error) {
-        newErrors.files = error; // Just show last error for now
+        newErrors.files = error;
       } else {
         validFiles.push(file);
       }
@@ -153,6 +153,32 @@ const OnboardingView: React.FC = () => {
       kb_files: [...prev.kb_files, ...validFiles]
     }));
   };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    addFiles(Array.from(e.target.files || []));
+  };
+
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(true);
+  }, []);
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+  }, []);
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragging(false);
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length > 0) {
+      addFiles(files);
+    }
+  }, []);
 
   const removeFile = (index: number) => {
     setFormData(prev => ({
@@ -254,10 +280,10 @@ const OnboardingView: React.FC = () => {
       {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2">
+          <a href="/" className="flex items-center space-x-2 cursor-pointer">
             <div className="w-8 h-8 bg-ramp-lime rounded-lg flex items-center justify-center font-bold text-black border border-black/5">V</div>
             <span className="font-bold text-lg tracking-tight">Voiceptionist</span>
-          </div>
+          </a>
           <div className="text-sm text-gray-500 font-medium">Setup Guide</div>
         </div>
       </div>
@@ -381,13 +407,17 @@ const OnboardingView: React.FC = () => {
                   </div>
 
                   <div
-                    className="border-2 border-dashed border-gray-200 rounded-2xl p-10 text-center hover:border-ramp-lime hover:bg-ramp-lime/5 transition-all cursor-pointer group"
+                    className={`border-2 border-dashed rounded-2xl p-10 text-center transition-all cursor-pointer group ${isDragging ? 'border-ramp-lime bg-ramp-lime/10 scale-[1.02]' : 'border-gray-200 hover:border-ramp-lime hover:bg-ramp-lime/5'}`}
                     onClick={() => fileInputRef.current?.click()}
+                    onDragOver={handleDragOver}
+                    onDragEnter={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                    onDrop={handleDrop}
                   >
-                    <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <Upload size={32} className="text-gray-400 group-hover:text-black transition-colors" />
+                    <div className={`w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300 ${isDragging ? 'scale-110' : 'group-hover:scale-110'}`}>
+                      <Upload size={32} className={`transition-colors ${isDragging ? 'text-black' : 'text-gray-400 group-hover:text-black'}`} />
                     </div>
-                    <p className="font-bold text-gray-900 mb-1">Click to upload documents</p>
+                    <p className="font-bold text-gray-900 mb-1">{isDragging ? 'Drop files here' : 'Drag & drop or click to upload'}</p>
                     <p className="text-sm text-gray-500">PDF, DOCX, TXT allowed (Max 100MB)</p>
                     <input
                       ref={fileInputRef}

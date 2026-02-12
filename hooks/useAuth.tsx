@@ -49,6 +49,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 await fetchUserProperties(session.user.id);
             }
             setLoading(false);
+        }).catch(() => {
+            setLoading(false);
         });
 
         // Listen for auth changes
@@ -68,17 +70,27 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, []);
 
     const signIn = async (email: string, password: string) => {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        return { error: error as Error | null };
+        try {
+            const { error } = await supabase.auth.signInWithPassword({ email, password });
+            return { error: error as Error | null };
+        } catch (err) {
+            return { error: err as Error };
+        }
     };
 
     const signUp = async (email: string, password: string) => {
-        const { error } = await supabase.auth.signUp({ email, password });
-        return { error: error as Error | null };
+        try {
+            const { error } = await supabase.auth.signUp({ email, password });
+            return { error: error as Error | null };
+        } catch (err) {
+            return { error: err as Error };
+        }
     };
 
     const signOut = async () => {
-        await supabase.auth.signOut();
+        try {
+            await supabase.auth.signOut();
+        } catch {}
         setPropertyIds([]);
     };
 

@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
-import { 
-  ChevronDown, Menu, X, CreditCard, PieChart, FileText, ShoppingCart, Globe, Briefcase, 
-  Settings, Database, MessageSquare, Code, Terminal, Home, Store, Users, Building2, 
-  Laptop, Pickaxe, FlaskConical, Stethoscope, GraduationCap, ShoppingBag, Landmark, 
-  Calculator, Handshake, Calendar, RefreshCcw, BookOpen, TrendingUp, BarChart, 
-  Newspaper, UserPlus, Rocket, HelpCircle, Tablet, ArrowRight
+import {
+  ChevronDown, Menu, X, Clock, UserCheck, FileText, Wrench, Globe, Briefcase,
+  Settings, Database, MessageSquare, Code, Terminal, Home, Store, Users, Building2,
+  Laptop, Pickaxe, FlaskConical, Stethoscope, GraduationCap, ShoppingBag, Landmark,
+  Calculator, Handshake, Calendar, RefreshCcw, TrendingUp, BarChart,
+  Newspaper, UserPlus, Rocket, HelpCircle, Tablet, ArrowRight, Phone, BarChart3, Shield
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -26,21 +26,21 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
   }, [currentView]);
 
   const products = [
-    { icon: <CreditCard size={18} />, title: '24/7 Availability', desc: 'Captures every inbound call, even after hours' },
-    { icon: <PieChart size={18} />, title: 'Lead Qualification', desc: 'Turn inquiries into booked tours.' },
-    { icon: <FileText size={18} />, title: 'Tour Scheduling', desc: 'Convert calls into showings.' },
-    { icon: <ShoppingCart size={18} />, title: 'Resident Support', desc: 'Handle maintenance & emergencies.' },
-    { icon: <Globe size={18} />, title: 'SMS Follow-Ups', desc: 'Recover missed calls with text.' },
-    { icon: <Briefcase size={18} />, title: 'Multi-Property Coverage', desc: 'Scale your entire portfolio' },
+    { icon: <Clock size={18} />, title: '24/7 Availability', desc: 'Captures every inbound call, even after hours' },
+    { icon: <UserCheck size={18} />, title: 'Lead Qualification', desc: 'Turn inquiries into booked tours.' },
+    { icon: <Calendar size={18} />, title: 'Tour Scheduling', desc: 'Convert calls into showings.' },
+    { icon: <Wrench size={18} />, title: 'Resident Support', desc: 'Handle maintenance & emergencies.' },
+    { icon: <Phone size={18} />, title: 'SMS Follow-Ups', desc: 'Recover missed calls with text.' },
+    { icon: <Building2 size={18} />, title: 'Multi-Property Coverage', desc: 'Scale your entire portfolio' },
   ];
 
   const platform = [
     { icon: <Settings size={18} />, title: 'Integrations', desc: 'Connect to your leasing stack.' },
-    { icon: <Database size={18} />, title: 'Reporting', desc: 'Get full visibility in real-time.' },
+    { icon: <BarChart3 size={18} />, title: 'Reporting', desc: 'Get full visibility in real-time.' },
     { icon: <MessageSquare size={18} />, title: 'Chat Analytics', desc: 'See what converts and why.' },
     { icon: <Globe size={18} />, title: 'Routing & Workflows', desc: 'Escalate urgent issues automatically.' },
     { icon: <Terminal size={18} />, title: 'Intelligence', desc: 'Put AI to work for you.' },
-    { icon: <Code size={18} />, title: 'Admin Roles', desc: 'Control who can change what.' },
+    { icon: <Shield size={18} />, title: 'Admin Roles', desc: 'Control who can change what.' },
   ];
 
   const solutionsBySize = [
@@ -329,7 +329,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
         </div>
 
         <div className="hidden lg:flex items-center space-x-4">
-          <button onClick={() => onNavigate('demo', false)} className={`text-[15px] font-medium px-4 py-2.5 rounded-xl transition-colors ${isScrolled ? 'hover:bg-[#cfdcfc] hover:text-black' : 'hover:bg-[#cfdcfc] hover:text-black'}`}>See a demo</button>
+          <button onClick={() => onNavigate('dashboard', true)} className={`text-[15px] font-medium px-4 py-2.5 rounded-xl transition-colors ${isScrolled ? 'hover:bg-[#cfdcfc] hover:text-black' : 'hover:bg-[#cfdcfc] hover:text-black'}`}>Sign in</button>
           <button onClick={() => onNavigate('onboarding', false)} className="bg-[#abc2fe] text-black px-6 py-2.5 rounded-xl text-[15px] font-bold hover:brightness-95 transition-all shadow-[0_8px_24px_rgba(171,194,254,0.25)]">Get Started</button>
         </div>
 
@@ -344,7 +344,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
             <div key={item.label} onClick={() => { onNavigate(item.view || 'explore'); setMobileMenuOpen(false); }} className="text-lg font-medium px-4 py-3 rounded-xl hover:bg-[#cfdcfc] transition-colors">{item.label}</div>
           ))}
           <div className="flex flex-col space-y-3 pt-4 border-t border-black/5">
-            <button onClick={() => { onNavigate('demo', false); setMobileMenuOpen(false); }} className="w-full text-center py-4 border border-black/10 rounded-xl font-medium hover:bg-[#cfdcfc]">See a demo</button>
+            <button onClick={() => { onNavigate('dashboard', true); setMobileMenuOpen(false); }} className="w-full text-center py-4 border border-black/10 rounded-xl font-medium hover:bg-[#cfdcfc]">Sign in</button>
             <button onClick={() => { onNavigate('onboarding', false); setMobileMenuOpen(false); }} className="w-full bg-[#abc2fe] text-black py-4 rounded-xl font-bold">Get Started</button>
           </div>
         </div>

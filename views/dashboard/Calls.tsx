@@ -60,6 +60,14 @@ const Calls: React.FC<CallsProps> = ({ onCallSelect }) => {
     );
   }
 
+  if (!selectedContact) {
+    return (
+      <div className="flex items-center justify-center h-full text-slate-400 text-sm">
+        No conversations yet.
+      </div>
+    );
+  }
+
   if (error) {
     return (
       <div className="flex items-center justify-center h-full">

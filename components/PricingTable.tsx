@@ -14,7 +14,7 @@ interface Category {
 }
 
 const PricingTable: React.FC = () => {
-  const [expanded, setExpanded] = useState<string[]>(['Corporate Card', 'Travel', 'Expense Management']);
+  const [expanded, setExpanded] = useState<string[]>(['AI Call Handling', 'Lead Management', 'Property Operations']);
 
   const toggleCategory = (title: string) => {
     setExpanded(prev => prev.includes(title) ? prev.filter(t => t !== title) : [...prev, title]);
@@ -22,32 +22,34 @@ const PricingTable: React.FC = () => {
 
   const categories: Category[] = [
     {
-      title: 'Corporate Card',
+      title: 'AI Call Handling',
       rows: [
-        { label: 'Corporate liability charge card', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: '20x higher credit limits', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Unlimited physical and virtual cards', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Card issuing controls', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Category and vendor controls', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Proactive policy controls and follow up', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <span className="text-[11px] text-gray-500">+ Automatically lock cards when required receipts or items aren't submitted on time</span>, enterprise: <span className="text-[11px] text-gray-500">+ Automatically lock cards when required receipts or items aren't submitted on time</span> },
+        { label: '24/7 AI-powered call answering', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Custom voice and personality', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Knowledge base integration', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'SMS follow-up messages', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Call routing and escalation', free: <Minus className="text-gray-300 mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Multi-language support', free: <Minus className="text-gray-300 mx-auto" size={18} />, plus: <Minus className="text-gray-300 mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
       ]
     },
     {
-      title: 'Travel',
+      title: 'Lead Management',
       rows: [
-        { label: 'Travel bookings', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Travel policies', free: 'Create company-wide policies', plus: '+ Create custom travel policies based on role, department, location, and more', enterprise: '+ Create custom travel policies based on role, department, location, and more' },
-        { label: 'Guest bookings', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: '+ Invite external guests to book travel in Voiceptionist with set budgets and policy controls', enterprise: '+ Invite external guests to book travel in Voiceptionist with set budgets and policy controls' },
-        { label: 'Support', free: '24/7 chat support', plus: '24/7 phone support', enterprise: '24/7 phone support' },
+        { label: 'Automatic lead capture from calls', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Lead qualification and scoring', free: <Minus className="text-gray-300 mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Tour scheduling automation', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'CRM integrations', free: <Minus className="text-gray-300 mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
       ]
     },
     {
-      title: 'Expense Management',
+      title: 'Property Operations',
       rows: [
-        { label: 'Spend limits with preset accounting codes', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Automatic receipt collection and matching', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Employee repayments', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
-        { label: 'Reimbursements', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <span className="text-[11px] text-gray-500">+ Limit reimbursement spending<br/>+ Submit and review reimbursements in bulk<br/>+ Send weekly batched reimbursements</span>, enterprise: <span className="text-[11px] text-gray-500">+ Limit reimbursement spending<br/>+ Submit and review reimbursements in bulk<br/>+ Send weekly batched reimbursements</span> },
+        { label: 'Maintenance request intake', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Emergency triage and routing', free: <Check className="text-[#34d399] mx-auto" size={18} />, plus: <Check className="text-[#34d399] mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Multi-property support', free: 'Up to 1 property', plus: 'Up to 10 properties', enterprise: 'Unlimited' },
+        { label: 'Dedicated account manager', free: <Minus className="text-gray-300 mx-auto" size={18} />, plus: <Minus className="text-gray-300 mx-auto" size={18} />, enterprise: <Check className="text-[#34d399] mx-auto" size={18} /> },
+        { label: 'Analytics and reporting dashboard', free: 'Basic', plus: 'Advanced', enterprise: 'Custom' },
+        { label: 'Priority support', free: 'Email', plus: '24/7 chat', enterprise: '24/7 phone + dedicated' },
       ]
     }
   ];
@@ -58,12 +60,12 @@ const PricingTable: React.FC = () => {
         <h2 className="text-[48px] font-medium text-black">Compare <br /> Features</h2>
         <div className="grid grid-cols-3 gap-4 flex-1 max-w-[900px]">
           <div className="text-center">
-            <h3 className="text-xl font-bold mb-4">Free</h3>
+            <h3 className="text-xl font-bold mb-4">Starter</h3>
             <button className="w-full py-3 bg-[#f5f5f4] text-black font-bold rounded-xl text-xs hover:bg-gray-200 transition-colors">Get started for free</button>
           </div>
           <div className="text-center">
-            <h3 className="text-xl font-bold mb-4">Plus</h3>
-            <button className="w-full py-3 bg-[#abc2fe] text-black font-bold rounded-xl text-xs hover:brightness-95 transition-all">Get started for free</button>
+            <h3 className="text-xl font-bold mb-4">Professional</h3>
+            <button className="w-full py-3 bg-[#abc2fe] text-black font-bold rounded-xl text-xs hover:brightness-95 transition-all">Get started</button>
           </div>
           <div className="text-center">
             <h3 className="text-xl font-bold mb-4">Enterprise</h3>
@@ -75,14 +77,14 @@ const PricingTable: React.FC = () => {
       <div className="space-y-4">
         {categories.map((cat) => (
           <div key={cat.title} className="border-t-2 border-black pt-2">
-            <button 
+            <button
               onClick={() => toggleCategory(cat.title)}
               className="w-full flex items-center justify-between py-6 text-xl font-bold text-black"
             >
               <span>{cat.title}</span>
               {expanded.includes(cat.title) ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
             </button>
-            
+
             {expanded.includes(cat.title) && (
               <div className="divide-y divide-gray-100">
                 {cat.rows.map((row, i) => (

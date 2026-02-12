@@ -41,7 +41,9 @@ const DashboardShell: React.FC = () => {
     return <Login />;
   }
 
-  const handleCallSelect = (id: string) => {};
+  const handleCallSelect = (id: string) => {
+    setSelectedCallId(id);
+  };
 
   const handlePropertySelect = (id: string) => {
     setSelectedPropertyId(id);

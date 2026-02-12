@@ -62,7 +62,7 @@ const RealTimeFeed: React.FC = () => {
       <div className="flex justify-between items-end">
         <div>
           <h1 className="text-4xl font-bold text-slate-900 tracking-tight mb-2">Live AI Operations</h1>
-          <p className="text-slate-500 font-medium">Real-time monitoring of all active voice and SMS interactions.</p>
+          <p className="text-slate-500 font-medium">Real-time monitoring of all active voice and SMS interactions. <span className="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-100 ml-1">Preview</span></p>
         </div>
         <div className="flex gap-4 items-center">
            <div className="flex items-center gap-2 px-3 py-1 bg-green-50 text-green-600 rounded-full border border-green-100 text-[10px] font-black uppercase tracking-widest">

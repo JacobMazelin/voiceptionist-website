@@ -95,7 +95,7 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onSignOut, u
             Live AI Instance
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
           </div>
-          <div className="text-[10px] text-slate-500 mb-3">Handling 4 active calls now</div>
+          <div className="text-[10px] text-slate-500 mb-3">Monitor live AI activity</div>
           <button
             onClick={() => setActiveTab('realtime-feed')}
             className={`w-full py-2 ${BRAND_ACCENT} text-slate-900 text-xs font-bold rounded shadow-sm hover:brightness-95 transition-all`}

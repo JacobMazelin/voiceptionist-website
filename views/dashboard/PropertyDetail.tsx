@@ -23,6 +23,7 @@ import {
   Upload
 } from 'lucide-react';
 import { BRAND_ACCENT } from '../../constants';
+import { useProperties } from '../../hooks/useProperties';
 
 interface PropertyDetailProps {
   propertyId: string;
@@ -31,40 +32,48 @@ interface PropertyDetailProps {
 
 const PropertyDetail: React.FC<PropertyDetailProps> = ({ propertyId, onBack }) => {
   const [isEditing, setIsEditing] = useState(false);
-  
-  // Mock detailed data for the property
+  const { properties, loading: propertiesLoading } = useProperties();
+
+  const realProperty = properties.find(p => p.id === propertyId);
+
   const [property, setProperty] = useState({
-    name: 'Skyline Lofts',
-    address: '422 N West Ave, Downtown District',
-    units: 124,
-    occupancy: '92%',
-    revenue: '$342,000',
-    budget: '$1.2M',
-    activeTours: 8,
-    avgRent: '$2,850',
-    targetOccupancy: '95%',
-    vacancies: [
-      { unit: '102', type: 'Studio', status: 'Available', rent: '$1,950' },
-      { unit: '205', type: '1BR', status: 'Available', rent: '$2,300' },
-      { unit: '402', type: '2BR', status: 'Under Maintenance', rent: '$3,100' },
-      { unit: '512', type: 'Penthouse', status: 'Available', rent: '$5,500' },
-    ],
-    bylaws: [
-      { name: 'Pet Policy v2.0', size: '1.2 MB', updated: '2 days ago' },
-      { name: 'HOA Bylaws 2024', size: '4.5 MB', updated: 'Oct 2023' },
-      { name: 'Amenity Hours', size: '0.8 MB', updated: 'Yesterday' }
-    ],
-    aiInsights: [
-      "Recent spike in 2BR inquiries for Oct 1st move-ins.",
-      "Most common question: 'Is there EV charging available?' (Current Answer: No)",
-      "Leasing lead efficiency up 12% since enabling instant tour booking."
-    ]
+    name: '',
+    address: '',
+    units: 0,
+    occupancy: '--',
+    revenue: '--',
+    budget: '--',
+    activeTours: 0,
+    avgRent: '--',
+    targetOccupancy: '--',
+    vacancies: [] as { unit: string; type: string; status: string; rent: string }[],
+    bylaws: [] as { name: string; size: string; updated: string }[],
+    aiInsights: [] as string[],
   });
 
+  // Sync real property data when loaded
+  React.useEffect(() => {
+    if (realProperty) {
+      setProperty(prev => ({
+        ...prev,
+        name: realProperty.name,
+        address: realProperty.timezone || '',
+        units: realProperty.unitCount || 0,
+      }));
+    }
+  }, [realProperty]);
+
   const handleSave = () => {
-    // Logic to save changes would go here
     setIsEditing(false);
   };
+
+  if (propertiesLoading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="w-8 h-8 border-2 border-slate-200 border-t-slate-900 rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   if (isEditing) {
     return (
@@ -283,10 +292,10 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ propertyId, onBack }) =
       {/* Stats Grid - Ramp Style */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {[
-          { label: 'Occupancy', value: property.occupancy, sub: `Target: ${property.targetOccupancy}`, icon: <Users size={18} /> },
-          { label: 'Monthly Revenue', value: property.revenue, sub: '+12% from Aug', icon: <DollarSign size={18} /> },
-          { label: 'Avg. Rent', value: property.avgRent, sub: 'Above Market', icon: <TrendingUp size={18} /> },
-          { label: 'Active Tours', value: property.activeTours.toString(), sub: 'Next: 2:00 PM', icon: <Calendar size={18} /> },
+          { label: 'Total Units', value: property.units ? property.units.toString() : '--', sub: 'Configured', icon: <Users size={18} /> },
+          { label: 'AI Status', value: 'Active', sub: 'Monitoring calls', icon: <ShieldCheck size={18} /> },
+          { label: 'Knowledge Base', value: property.bylaws.length.toString(), sub: 'Documents', icon: <FileText size={18} /> },
+          { label: 'Active Tours', value: property.activeTours.toString(), sub: 'Scheduled', icon: <Calendar size={18} /> },
         ].map((stat) => (
           <div key={stat.label} className="p-6 bg-white border border-slate-200 rounded-2xl shadow-sm">
             <div className="flex items-center justify-between mb-2">
@@ -393,50 +402,23 @@ const PropertyDetail: React.FC<PropertyDetailProps> = ({ propertyId, onBack }) =
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#abc2fe] opacity-[0.05] blur-[100px] -mr-32 -mt-32"></div>
           </div>
 
-          {/* Property Rules / General Info */}
+          {/* Property Profile */}
           <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
             <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Property Profile</h3>
             <div className="space-y-5">
               <div className="flex justify-between items-center py-2 border-b border-slate-50">
                 <div className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-tighter text-[10px]">Total Units</div>
-                <span className="text-sm font-bold text-slate-900">{property.units}</span>
+                <span className="text-sm font-bold text-slate-900">{property.units || '--'}</span>
               </div>
               <div className="flex justify-between items-center py-2 border-b border-slate-50">
-                <div className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-tighter text-[10px]">Year Built</div>
-                <span className="text-sm font-bold text-slate-900">2021</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-slate-50">
-                <div className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-tighter text-[10px]">Property Manager</div>
-                <span className="text-sm font-bold text-slate-900 underline">Marcus V.</span>
+                <div className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-tighter text-[10px]">Timezone</div>
+                <span className="text-sm font-bold text-slate-900">{property.address || '--'}</span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <div className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-tighter text-[10px]">Neighborhood</div>
-                <span className="text-sm font-bold text-slate-900">West End</span>
+                <div className="flex items-center gap-2 text-slate-400 font-bold uppercase tracking-tighter text-[10px]">AI Status</div>
+                <span className="text-sm font-bold text-green-600">Active</span>
               </div>
             </div>
-          </div>
-
-          {/* Budget Visualization Placeholder */}
-          <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-             <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xs font-black text-slate-400 uppercase tracking-widest">Financial Health</h3>
-                <DollarSign size={16} className="text-slate-300" />
-             </div>
-             <div className="space-y-4">
-                <div>
-                   <div className="flex justify-between text-[10px] font-bold text-slate-400 mb-1 uppercase">Operating Budget</div>
-                   <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                      <div className="bg-slate-900 h-full w-[74%]"></div>
-                   </div>
-                </div>
-                <div>
-                   <div className="flex justify-between text-[10px] font-bold text-slate-400 mb-1 uppercase">Maintenance Cost</div>
-                   <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
-                      <div className="bg-[#abc2fe] h-full w-[30%]"></div>
-                   </div>
-                </div>
-                <p className="text-[10px] text-slate-400 italic mt-4">Calculated based on real-time vendor dispatch costs.</p>
-             </div>
           </div>
 
         </div>

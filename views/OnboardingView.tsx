@@ -4,7 +4,6 @@ import {
   ArrowLeft, ArrowRight, Building2, Upload, FileText, Phone,
   CheckCircle2, Loader2, X, Eye, EyeOff
 } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 
 const STEPS = [
   { key: 'basics', label: 'Property Info' },
@@ -192,46 +191,25 @@ const OnboardingView: React.FC = () => {
     setErrors({});
 
     try {
-      // 1. Sign Up User
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email: formData.contact_email,
-        password: formData.password,
+      const response = await fetch('/api/provision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.contact_email,
+          password: formData.password,
+          property_name: formData.property_name,
+        }),
       });
 
-      if (authError) throw authError;
-      if (!authData.user) throw new Error('Failed to create user account');
+      const data = await response.json();
 
-      const userId = authData.user.id;
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create account. Please try again.');
+      }
 
-      // 2. Create Property
-      const { data: propertyData, error: propertyError } = await supabase
-        .from('properties')
-        .insert({
-          name: formData.property_name,
-          timezone: 'America/New_York', // Default for now
-          // address: formData.address,
-          // unit_count: parseInt(formData.unit_count) || 0
-        })
-        .select()
-        .single();
-
-      if (propertyError) throw propertyError;
-
-      // 3. Link User to Property
-      const { error: linkError } = await supabase
-        .from('user_properties')
-        .insert({
-          user_id: userId,
-          property_id: propertyData.id,
-          role: 'owner'
-        });
-
-      if (linkError) throw linkError;
-
-      // Success!
       setProvisionResult({
-        phone_number: '(555) 123-4567', // Mock for now
-        property_id: propertyData.id,
+        phone_number: '',
+        property_id: data.property_id,
         agent_id: 'agent_default'
       });
 
@@ -265,7 +243,9 @@ const OnboardingView: React.FC = () => {
           </div>
 
           <a
-            href="http://localhost:3001"
+            href="/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
             className="block w-full bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             Go to Dashboard

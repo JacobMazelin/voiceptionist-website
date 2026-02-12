@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import HomeView from './views/HomeView';
 import TeamView from './views/TeamView';
 import TermsView from './views/TermsView';
+import PrivacyView from './views/PrivacyView';
 import Footer from './components/Footer';
 
 const OnboardingView = lazy(() => import('./views/OnboardingView'));
@@ -14,7 +15,7 @@ const Loading = () => (
   </div>
 );
 
-type ViewState = 'home' | 'team' | 'onboarding' | 'terms' | 'dashboard';
+type ViewState = 'home' | 'team' | 'onboarding' | 'terms' | 'privacy' | 'dashboard';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
@@ -22,6 +23,7 @@ const App: React.FC = () => {
   const getViewFromPath = (path: string): ViewState => {
     if (path === '/' || path === '') return 'home';
     if (path.includes('onboarding')) return 'onboarding';
+    if (path.includes('privacy')) return 'privacy';
     if (path.includes('terms')) return 'terms';
     if (path.includes('dashboard')) return 'dashboard';
     if (path.includes('team')) return 'team';
@@ -75,6 +77,7 @@ const App: React.FC = () => {
         {currentView === 'home' && <HomeView onExplore={() => navigate('onboarding', false)} />}
         {currentView === 'team' && <TeamView />}
         {currentView === 'terms' && <TermsView />}
+        {currentView === 'privacy' && <PrivacyView />}
       </main>
 
       <Footer onNavigate={navigate} />

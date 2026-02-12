@@ -573,7 +573,7 @@ const OnboardingView: React.FC = () => {
           </div>
 
           <p className="text-center text-gray-400 text-xs mt-8">
-            By continuing, you agree to our <a href="/terms" target="_blank" className="underline hover:text-gray-600">Terms of Service</a> and <a href="/terms" target="_blank" className="underline hover:text-gray-600">Privacy Policy</a>.
+            By continuing, you agree to our <a href="/terms" target="_blank" className="underline hover:text-gray-600">Terms of Service</a> and <a href="/privacy" target="_blank" className="underline hover:text-gray-600">Privacy Policy</a>.
           </p>
 
         </div>

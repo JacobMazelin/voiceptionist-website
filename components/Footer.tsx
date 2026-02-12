@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Instagram, Linkedin, Twitter, Facebook } from 'lucide-react';
 import EmailInput from './EmailInput';
 
 interface FooterProps {
@@ -68,7 +67,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="max-w-2xl space-y-6 text-xs leading-relaxed">
             <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6 text-white font-medium">
               <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('terms'); }} className="hover:text-ramp-lime transition-colors">Terms of Service</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('terms'); }} className="hover:text-ramp-lime transition-colors">Privacy</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('privacy'); }} className="hover:text-ramp-lime transition-colors">Privacy Policy</a>
             </div>
             <p>Voiceptionist is an early-stage startup building AI receptionists for student housing and property managers.</p>
             <p>Currently in private beta. Built by the Voiceptionist team.</p>
@@ -82,12 +81,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <div className="space-y-1">
                 <p className="text-white font-bold text-sm">Voiceptionist Business Corporation</p>
               </div>
-            </div>
-            <div className="flex gap-6 text-white/50">
-              <Linkedin size={20} className="hover:text-white cursor-pointer" />
-              <Twitter size={20} className="hover:text-white cursor-pointer" />
-              <Facebook size={20} className="hover:text-white cursor-pointer" />
-              <Instagram size={20} className="hover:text-white cursor-pointer" />
             </div>
           </div>
         </div>

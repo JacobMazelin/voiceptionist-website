@@ -20,7 +20,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ placeholder = "What's your work
       return;
     }
     setError('');
-    alert('Success! Proceeding to next step.');
+    window.location.href = `/onboarding?email=${encodeURIComponent(email)}`;
   };
 
   return (

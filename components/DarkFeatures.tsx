@@ -1,36 +1,34 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
-const TransactionFeed: React.FC = () => (
+const CallLogFeed: React.FC = () => (
   <div className="bg-[#fcfaf7] w-full h-full flex items-center justify-center p-8">
     <div className="bg-white rounded-[12px] shadow-[0_20px_40px_rgba(0,0,0,0.04)] border border-gray-100 w-full max-w-sm overflow-hidden">
       <div className="p-6 border-b border-gray-50 flex justify-between items-center">
         <h4 className="text-2xl font-bold text-gray-900">Today</h4>
-        <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-1 rounded uppercase tracking-wider">May 17</span>
+        <span className="text-[10px] font-bold text-gray-400 bg-gray-50 px-2 py-1 rounded uppercase tracking-wider">Handled by AI</span>
       </div>
       <div className="p-2">
-        <div className="flex items-center justify-between p-4 bg-blue-50/50 rounded-[8px] mb-1">
+        <div className="flex items-center justify-between p-4 bg-emerald-50/50 rounded-[8px] mb-1">
           <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-white rounded-[8px] shadow-sm flex items-center justify-center">
-              <div className="w-2 h-4 bg-sky-400 rounded-full"></div>
-            </div>
-            <span className="font-bold text-gray-800">Blue Bottle</span>
+            <div className="w-10 h-10 bg-white rounded-[8px] shadow-sm flex items-center justify-center text-emerald-600 font-bold text-xs">Tour</div>
+            <span className="font-bold text-gray-800">Tour Booked</span>
           </div>
-          <span className="font-bold text-gray-900">$11.83</span>
+          <span className="text-xs font-bold text-emerald-600">2:14 PM</span>
         </div>
         <div className="flex items-center justify-between p-4 hover:bg-gray-50 rounded-[8px] transition-colors cursor-default mb-1">
           <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-white rounded-[8px] shadow-sm flex items-center justify-center font-bold text-xs">Uber</div>
-            <span className="font-bold text-gray-800">Uber</span>
+            <div className="w-10 h-10 bg-white rounded-[8px] shadow-sm flex items-center justify-center text-sky-600 font-bold text-xs">Mnt</div>
+            <span className="font-bold text-gray-800">Maintenance Req</span>
           </div>
-          <span className="font-bold text-gray-900">$31.19</span>
+          <span className="text-xs font-bold text-gray-400">1:47 PM</span>
         </div>
         <div className="flex items-center justify-between p-4 hover:bg-gray-50 rounded-[8px] transition-colors cursor-default">
           <div className="flex items-center space-x-4">
-            <div className="w-10 h-10 bg-white rounded-[8px] shadow-sm flex items-center justify-center font-bold text-xs text-emerald-600">sg</div>
-            <span className="font-bold text-gray-800">Sweetgreen</span>
+            <div className="w-10 h-10 bg-white rounded-[8px] shadow-sm flex items-center justify-center text-violet-600 font-bold text-xs">Lse</div>
+            <span className="font-bold text-gray-800">Lease Inquiry</span>
           </div>
-          <span className="font-bold text-gray-900">$27.50</span>
+          <span className="text-xs font-bold text-gray-400">12:30 PM</span>
         </div>
       </div>
     </div>
@@ -42,21 +40,21 @@ const DarkFeatures: React.FC = () => {
     {
       title: <>Set workflows that <br />enforce themselves.</>,
       desc: <>Train Voiceptionist on your leasing rules,<br />FAQs, emergency protocols, and routing logic.</>,
-      link: 'Expense management',
+      link: 'AI configuration',
       img: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1200'
     },
     {
       title: 'Triple-checks are done for you.',
-      desc: <>Voiceptionist keeps an eye out 24/7 to<br />catch any out-of-policy transactions</>,
-      link: 'Intelligence',
+      desc: <>Voiceptionist keeps an eye out 24/7 to<br />catch and route urgent requests instantly.</>,
+      link: 'Smart routing',
       img: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200',
       reversed: true
     },
     {
       title: 'Leave the busywork to us.',
       desc: <>Keep everyone focused on the big picture<br />and let Voiceptionist automate the rest</>,
-      link: 'Accounting automation',
-      customVisual: <TransactionFeed />
+      link: 'Call automation',
+      customVisual: <CallLogFeed />
     }
   ];
 

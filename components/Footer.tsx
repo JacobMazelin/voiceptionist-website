@@ -8,32 +8,54 @@ interface FooterProps {
 }
 
 const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
-  const footerData = {
-    Product: ['AI Receptionist', 'SMS Follow-Ups', 'Tour Scheduling', 'Maintenance Triage', 'Call Analytics'],
-    Solutions: ['Student Housing', 'Multifamily', 'HOAs', 'Property Managers'],
-    Company: ['Team', 'Help Center', 'Contact Sales'],
-  };
+  const footerLinks: { title: string; items: { label: string; action?: () => void }[] }[] = [
+    {
+      title: 'Product',
+      items: [
+        { label: 'AI Receptionist', action: () => onNavigate('onboarding') },
+        { label: 'Get Started', action: () => onNavigate('onboarding') },
+      ],
+    },
+    {
+      title: 'Solutions',
+      items: [
+        { label: 'Student Housing' },
+        { label: 'Multifamily' },
+        { label: 'Property Managers' },
+      ],
+    },
+    {
+      title: 'Company',
+      items: [
+        { label: 'Team', action: () => onNavigate('team') },
+      ],
+    },
+  ];
 
   return (
     <footer className="bg-ramp-navy text-white/50 pt-24 pb-16">
       <div className="max-w-7xl mx-auto px-4">
         {/* Sitemap Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-12 mb-20">
-          {Object.entries(footerData).map(([title, items]) => (
+          {footerLinks.map(({ title, items }) => (
             <div key={title} className="space-y-6">
               <h4 className="text-white font-bold text-sm tracking-wide uppercase">{title}</h4>
               <ul className="space-y-4">
                 {items.map(item => (
-                  <li key={item} className="text-sm hover:text-white transition-colors">
-                    <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        if (item === 'Team') onNavigate('team');
-                      }}
-                    >
-                      {item}
-                    </a>
+                  <li key={item.label} className={`text-sm ${item.action ? 'hover:text-white cursor-pointer' : ''} transition-colors`}>
+                    {item.action ? (
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          item.action!();
+                        }}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <span>{item.label}</span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -46,7 +68,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="max-w-2xl space-y-6 text-xs leading-relaxed">
             <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6 text-white font-medium">
               <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('terms'); }} className="hover:text-ramp-lime transition-colors">Terms of Service</a>
-              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('terms'); }} className="hover:text-ramp-lime transition-colors">Privacy Policy</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); onNavigate('terms'); }} className="hover:text-ramp-lime transition-colors">Privacy</a>
             </div>
             <p>Voiceptionist is an early-stage startup building AI receptionists for student housing and property managers.</p>
             <p>Currently in private beta. Built by the Voiceptionist team.</p>
@@ -74,7 +96,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       {/* CTA Section */}
       <div className="max-w-7xl mx-auto px-4 mt-10 mb-8 pt-0">
         <div className="flex flex-col items-start gap-4">
-          <p className="text-white text-xl font-medium">Join the <span className="font-bold">100+ businesses</span> simplifying their operations with Voiceptionist.</p>
+          <p className="text-white text-xl font-medium">Simplify your property operations with <span className="font-bold">Voiceptionist</span>.</p>
           <EmailInput dark buttonText="Get started for free" className="w-full max-w-2xl" />
         </div>
       </div>

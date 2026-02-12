@@ -329,8 +329,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
         </div>
 
         <div className="hidden lg:flex items-center space-x-4">
-          <button className={`text-[15px] font-medium px-4 py-2.5 rounded-xl transition-colors ${isScrolled ? 'hover:bg-[#cfdcfc] hover:text-black' : 'hover:bg-[#cfdcfc] hover:text-black'}`}>Sign in</button>
-          <button onClick={() => onNavigate('demo', false)} className="bg-[#abc2fe] text-black px-6 py-2.5 rounded-xl text-[15px] font-bold hover:brightness-95 transition-all shadow-[0_8px_24px_rgba(171,194,254,0.25)]">See a demo</button>
+          <button onClick={() => onNavigate('demo', false)} className={`text-[15px] font-medium px-4 py-2.5 rounded-xl transition-colors ${isScrolled ? 'hover:bg-[#cfdcfc] hover:text-black' : 'hover:bg-[#cfdcfc] hover:text-black'}`}>See a demo</button>
+          <button onClick={() => onNavigate('onboarding', false)} className="bg-[#abc2fe] text-black px-6 py-2.5 rounded-xl text-[15px] font-bold hover:brightness-95 transition-all shadow-[0_8px_24px_rgba(171,194,254,0.25)]">Get Started</button>
         </div>
 
         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2">
@@ -344,8 +344,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentView }) => {
             <div key={item.label} onClick={() => { onNavigate(item.view || 'explore'); setMobileMenuOpen(false); }} className="text-lg font-medium px-4 py-3 rounded-xl hover:bg-[#cfdcfc] transition-colors">{item.label}</div>
           ))}
           <div className="flex flex-col space-y-3 pt-4 border-t border-black/5">
-            <button className="w-full text-center py-4 border border-black/10 rounded-xl font-medium hover:bg-[#cfdcfc]">Sign in</button>
-            <button onClick={() => { onNavigate('demo', false); setMobileMenuOpen(false); }} className="w-full bg-[#abc2fe] text-black py-4 rounded-xl font-bold">See a demo</button>
+            <button onClick={() => { onNavigate('demo', false); setMobileMenuOpen(false); }} className="w-full text-center py-4 border border-black/10 rounded-xl font-medium hover:bg-[#cfdcfc]">See a demo</button>
+            <button onClick={() => { onNavigate('onboarding', false); setMobileMenuOpen(false); }} className="w-full bg-[#abc2fe] text-black py-4 rounded-xl font-bold">Get Started</button>
           </div>
         </div>
       )}

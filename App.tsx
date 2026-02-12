@@ -6,10 +6,13 @@ import ExploreView from './views/ExploreView';
 import NotFoundView from './views/NotFoundView';
 import PricingView from './views/PricingView';
 import CustomersView from './views/CustomersView';
+import OnboardingView from './views/OnboardingView';
+import TermsView from './views/TermsView';
+import DashboardView from './views/DashboardView';
 import OfferModal from './components/OfferModal';
 import Footer from './components/Footer';
 
-type ViewState = 'home' | 'demo' | 'explore' | 'not-found' | 'pricing' | 'customers';
+type ViewState = 'home' | 'demo' | 'explore' | 'not-found' | 'pricing' | 'customers' | 'onboarding' | 'terms' | 'dashboard';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
@@ -19,11 +22,14 @@ const App: React.FC = () => {
   const getViewFromPath = (path: string): ViewState => {
     if (path === '/' || path === '') return 'home';
     if (path.includes('see-a-demo')) return 'demo';
+    if (path.includes('onboarding')) return 'onboarding';
+    if (path.includes('terms')) return 'terms';
+    if (path.includes('dashboard')) return 'dashboard';
     if (path.includes('explore')) return 'explore';
     if (path.includes('pricing')) return 'pricing';
     if (path.includes('customers')) return 'customers';
     if (path.includes('404')) return 'not-found';
-    return 'home'; // Defaulting to home for simplicity in this demo
+    return 'home';
   };
 
   // Initialize view from URL path
@@ -32,7 +38,7 @@ const App: React.FC = () => {
     const params = new URLSearchParams(window.location.search);
     const viewParam = params.get('view');
 
-    if (viewParam && ['demo', 'explore', 'not-found', 'pricing', 'customers'].includes(viewParam)) {
+    if (viewParam && ['demo', 'explore', 'not-found', 'pricing', 'customers', 'onboarding', 'terms', 'dashboard'].includes(viewParam)) {
       setCurrentView(viewParam as ViewState);
       const newPath = `/${viewParam === 'demo' ? 'see-a-demo' : viewParam}`;
       window.history.replaceState(null, '', newPath);
@@ -49,7 +55,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     let inactivityTimer: number;
-    
+
     const resetTimer = () => {
       clearTimeout(inactivityTimer);
       inactivityTimer = window.setTimeout(() => {
@@ -70,7 +76,7 @@ const App: React.FC = () => {
 
   const navigate = (view: ViewState, newTab: boolean = false) => {
     const path = view === 'home' ? '/' : view === 'demo' ? '/see-a-demo' : `/${view}`;
-    
+
     if (newTab) {
       window.open(path, '_blank');
     } else {
@@ -80,16 +86,26 @@ const App: React.FC = () => {
     }
   };
 
+  // Onboarding and dashboard render without navbar/footer (clean, focused experience)
+  if (currentView === 'onboarding') {
+    return <OnboardingView />;
+  }
+
+  if (currentView === 'dashboard') {
+    return <DashboardView />;
+  }
+
   return (
     <div className={`min-h-screen flex flex-col ${showOffer ? 'overflow-hidden' : ''}`}>
       <Navbar onNavigate={navigate} currentView={currentView} />
-      
+
       <main className="flex-1">
         {currentView === 'home' && <HomeView onExplore={() => navigate('explore', false)} />}
         {currentView === 'demo' && <DemoView onBack={() => navigate('home')} />}
         {currentView === 'explore' && <ExploreView />}
         {currentView === 'pricing' && <PricingView />}
         {currentView === 'customers' && <CustomersView />}
+        {currentView === 'terms' && <TermsView />}
         {currentView === 'not-found' && <NotFoundView onNavigate={navigate} />}
       </main>
 

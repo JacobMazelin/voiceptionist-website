@@ -56,11 +56,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         name: property_name,
         timezone: 'America/New_York',
       })
-      .select('id')
+      .select('id, name')
       .single();
 
     if (propertyError) {
-      // Cleanup: delete the auth user if property creation fails
       await supabase.auth.admin.deleteUser(userId);
       console.error('Property creation error:', propertyError);
       return res.status(500).json({ error: 'Failed to create property. Please try again.' });
@@ -76,7 +75,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
 
     if (linkError) {
-      // Cleanup on failure
       await supabase.from('properties').delete().eq('id', propertyData.id);
       await supabase.auth.admin.deleteUser(userId);
       console.error('User-property link error:', linkError);
@@ -85,7 +83,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     return res.status(200).json({
       property_id: propertyData.id,
+      property_name: propertyData.name,
       user_id: userId,
+      phone_number: process.env.VAPI_DISPLAY_PHONE || '(734) 829-4025',
     });
   } catch (err: any) {
     console.error('Provision error:', err);

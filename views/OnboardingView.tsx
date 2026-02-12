@@ -2,8 +2,9 @@
 import React, { useState, useRef, useCallback } from 'react';
 import {
   ArrowLeft, ArrowRight, Building2, Upload, FileText, Phone,
-  CheckCircle2, Loader2, X, Eye, EyeOff
+  CheckCircle2, Loader2, X, Eye, EyeOff, Copy, Check
 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const STEPS = [
   { key: 'basics', label: 'Property Info' },
@@ -207,8 +208,14 @@ const OnboardingView: React.FC = () => {
         throw new Error(data.error || 'Failed to create account. Please try again.');
       }
 
+      // Sign in immediately so the dashboard session is ready
+      await supabase.auth.signInWithPassword({
+        email: formData.contact_email,
+        password: formData.password,
+      });
+
       setProvisionResult({
-        phone_number: '',
+        phone_number: data.phone_number || '',
         property_id: data.property_id,
         agent_id: 'agent_default'
       });
@@ -219,6 +226,16 @@ const OnboardingView: React.FC = () => {
     } finally {
       setIsProvisioning(false);
     }
+  };
+
+  const [phoneCopied, setPhoneCopied] = useState(false);
+
+  const copyPhone = () => {
+    if (!provisionResult?.phone_number) return;
+    const digits = provisionResult.phone_number.replace(/\D/g, '');
+    navigator.clipboard.writeText(digits);
+    setPhoneCopied(true);
+    setTimeout(() => setPhoneCopied(false), 2000);
   };
 
   // Success View
@@ -235,6 +252,28 @@ const OnboardingView: React.FC = () => {
             Your property <span className="font-semibold text-gray-900">{formData.property_name}</span> has been created.
           </p>
 
+          {provisionResult.phone_number && (
+            <div className="bg-gray-50 rounded-2xl p-6 text-left border border-gray-100">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Your AI Receptionist Number</p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+                    <Phone size={18} className="text-green-600" />
+                  </div>
+                  <span className="text-2xl font-bold text-gray-900 tracking-tight">{provisionResult.phone_number}</span>
+                </div>
+                <button
+                  onClick={copyPhone}
+                  className="p-2 text-gray-400 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors"
+                  title="Copy number"
+                >
+                  {phoneCopied ? <Check size={18} className="text-green-500" /> : <Copy size={18} />}
+                </button>
+              </div>
+              <p className="text-xs text-gray-400 mt-3">Give this number a call to test your AI receptionist.</p>
+            </div>
+          )}
+
           <div className="bg-gray-50 rounded-2xl p-6 space-y-4 text-left border border-gray-100">
             <div>
               <p className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">DASHBOARD ACCESS</p>
@@ -244,8 +283,6 @@ const OnboardingView: React.FC = () => {
 
           <a
             href="/dashboard"
-            target="_blank"
-            rel="noopener noreferrer"
             className="block w-full bg-gray-900 text-white font-bold py-4 rounded-xl hover:bg-black transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             Go to Dashboard

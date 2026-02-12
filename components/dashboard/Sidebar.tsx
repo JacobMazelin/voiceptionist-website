@@ -1,14 +1,16 @@
 
 import React from 'react';
 import { NAV_ITEMS, SETTINGS_ITEMS, BRAND_ACCENT } from '../../constants';
-import { ClipboardCheck } from 'lucide-react';
+import { ClipboardCheck, LogOut } from 'lucide-react';
 
 interface SidebarProps {
   activeTab: string;
   setActiveTab: (id: string) => void;
+  onSignOut?: () => void;
+  userEmail?: string;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
+const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab, onSignOut, userEmail }) => {
   return (
     <aside className="w-64 border-r border-slate-200 h-screen flex flex-col bg-white">
       <div className="p-6 flex items-center gap-3">
@@ -94,13 +96,30 @@ const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
           </div>
           <div className="text-[10px] text-slate-500 mb-3">Handling 4 active calls now</div>
-          <button 
+          <button
             onClick={() => setActiveTab('realtime-feed')}
             className={`w-full py-2 ${BRAND_ACCENT} text-slate-900 text-xs font-bold rounded shadow-sm hover:brightness-95 transition-all`}
           >
             Real-time Feed
           </button>
         </div>
+
+        {userEmail && (
+          <div className="mt-3 px-3 py-3 flex items-center justify-between">
+            <div className="truncate mr-2">
+              <p className="text-[11px] font-medium text-slate-500 truncate">{userEmail}</p>
+            </div>
+            {onSignOut && (
+              <button
+                onClick={onSignOut}
+                className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-md transition-colors shrink-0"
+                title="Sign out"
+              >
+                <LogOut size={14} />
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </aside>
   );

@@ -158,7 +158,7 @@ const DashboardShell: React.FC = () => {
 
   return (
     <div className="flex h-screen overflow-hidden bg-[#f8fafc]">
-      <Sidebar activeTab={activeTab} setActiveTab={handleTabChange} />
+      <Sidebar activeTab={activeTab} setActiveTab={handleTabChange} onSignOut={signOut} userEmail={user?.email} />
 
       <main className="flex-1 flex flex-col overflow-hidden">
         {isInboxView && (

@@ -16,11 +16,9 @@ type Step = typeof STEPS[number]['key'];
 
 interface FormData {
   property_name: string;
-  address: string; // Optional context
+  address: string;
   unit_count: string;
   contact_email: string;
-  contact_phone: string;
-  area_code: string;
   password: string;
   kb_files: File[];
 }
@@ -72,9 +70,7 @@ const OnboardingView: React.FC = () => {
     property_name: '',
     address: '',
     unit_count: '',
-    contact_email: '', // Will be pre-filled from URL or prop
-    contact_phone: '',
-    area_code: '',
+    contact_email: '',
     password: '',
     kb_files: []
   });
@@ -91,7 +87,7 @@ const OnboardingView: React.FC = () => {
   React.useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const email = params.get('email');
-    if (email) {
+    if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       setFormData(prev => ({ ...prev, contact_email: email }));
     }
   }, []);
@@ -111,9 +107,13 @@ const OnboardingView: React.FC = () => {
   const validateBasics = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.property_name.trim()) newErrors.property_name = 'Property name is required';
-    if (!formData.contact_email.trim()) newErrors.contact_email = 'Email description is required';
+    if (!formData.contact_email.trim()) {
+      newErrors.contact_email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.contact_email)) {
+      newErrors.contact_email = 'Please enter a valid email address';
+    }
     if (!formData.password) newErrors.password = 'Password is required';
-    if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
+    else if (formData.password.length < 8) newErrors.password = 'Password must be at least 8 characters';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -205,14 +205,21 @@ const OnboardingView: React.FC = () => {
       const data = await response.json();
 
       if (!response.ok) {
+        if (response.status === 409) {
+          throw new Error('An account with this email already exists. Please sign in from the dashboard instead.');
+        }
         throw new Error(data.error || 'Failed to create account. Please try again.');
       }
 
       // Sign in immediately so the dashboard session is ready
-      await supabase.auth.signInWithPassword({
-        email: formData.contact_email,
-        password: formData.password,
-      });
+      try {
+        await supabase.auth.signInWithPassword({
+          email: formData.contact_email,
+          password: formData.password,
+        });
+      } catch (signInErr) {
+        console.warn('Auto sign-in failed, user can sign in manually from dashboard:', signInErr);
+      }
 
       setProvisionResult({
         phone_number: data.phone_number || '',
@@ -420,7 +427,7 @@ const OnboardingView: React.FC = () => {
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   <div className="text-center space-y-2 mb-8">
                     <h1 className="text-3xl font-bold tracking-tight text-gray-900">Knowledge Base</h1>
-                    <p className="text-gray-500">Upload documents (PDF, DOCX) to train your AI agent about your property.</p>
+                    <p className="text-gray-500">Upload documents about your property. You can also add these later from your dashboard.</p>
                   </div>
 
                   <div
@@ -566,7 +573,7 @@ const OnboardingView: React.FC = () => {
           </div>
 
           <p className="text-center text-gray-400 text-xs mt-8">
-            By continuing, you agree to our Terms of Service and Privacy Policy.
+            By continuing, you agree to our <a href="/terms" target="_blank" className="underline hover:text-gray-600">Terms of Service</a> and <a href="/terms" target="_blank" className="underline hover:text-gray-600">Privacy Policy</a>.
           </p>
 
         </div>

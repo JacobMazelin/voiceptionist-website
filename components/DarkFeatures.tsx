@@ -87,7 +87,7 @@ const DarkFeatures: React.FC = () => {
                   {item.customVisual ? (
                     item.customVisual
                   ) : (
-                    <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                    <img src={item.img} alt={item.link} className="w-full h-full object-cover" />
                   )}
                </div>
             </div>

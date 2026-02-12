@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import HomeView from './views/HomeView';
 import TeamView from './views/TeamView';
-import OnboardingView from './views/OnboardingView';
 import TermsView from './views/TermsView';
-import DashboardView from './views/DashboardView';
 import Footer from './components/Footer';
+
+const OnboardingView = lazy(() => import('./views/OnboardingView'));
+const DashboardView = lazy(() => import('./views/DashboardView'));
+
+const Loading = () => (
+  <div className="min-h-screen flex items-center justify-center">
+    <div className="w-8 h-8 border-2 border-gray-200 border-t-gray-900 rounded-full animate-spin" />
+  </div>
+);
 
 type ViewState = 'home' | 'team' | 'onboarding' | 'terms' | 'dashboard';
 
@@ -45,11 +52,19 @@ const App: React.FC = () => {
   };
 
   if (currentView === 'onboarding') {
-    return <OnboardingView />;
+    return (
+      <Suspense fallback={<Loading />}>
+        <OnboardingView />
+      </Suspense>
+    );
   }
 
   if (currentView === 'dashboard') {
-    return <DashboardView />;
+    return (
+      <Suspense fallback={<Loading />}>
+        <DashboardView />
+      </Suspense>
+    );
   }
 
   return (
